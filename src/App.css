@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.controls {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px; /* Adjust as needed */
+  background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.display-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center; /* Center text and image */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0; /* Background color of the box */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 16px; /* Increased padding for a larger box */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.display-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%; /* Position it below the button */
+  left: 0; /* Align with the left edge of the button */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000; /* Ensure it appears above other elements */
+  margin-top: 5px; /* Add some space between the button and dropdown */
+  width: 250px; /* Set a fixed width for the dropdown box */
+  height: 100px;
+}
+
+.dropdown-row {
+  display: flex;
+  justify-content: space-between; /* Aligns items to leftmost and rightmost */
+  align-items: center; /* Align items in row */
+  margin: 20px 0; /* Space between rows */
+}
+
+.dropdown-row strong {
+  color: gray;
+  margin-right: 10px; /* Space between label and dropdown */
 }

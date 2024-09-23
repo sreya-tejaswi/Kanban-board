@@ -1,0 +1,97 @@
+.kanban-board {
+  display: flex;
+  overflow-x: auto; /* Horizontal scrolling if needed */
+  width: 100%;
+  /* background-color:#f6f5fa; */
+}
+
+.kanban-column {
+  flex: 0 0 calc(20% - 40px); /* 5 equal columns for statuses and priorities */
+  margin-right: 20px; /* Space between columns */
+  /*background-color: #f1f1f1;  Background color for columns */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners for columns */
+  font-size: small;
+}
+
+.kanban-ticket {
+  background-color: white; /* Background color for tickets */
+  border: 1px solid #ccc; /* Border for tickets */
+  border-radius: 5px; /* Rounded corners for tickets */
+  margin: 5px 0; /* Space between tickets */
+  padding: 10px; /* Padding inside tickets */
+  border-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.ticket-row {
+  display: flex;
+  align-items: left;
+  margin: 5px 0;
+  color: grey;
+}
+
+.ticket-id {
+  flex: 1;
+}
+
+.user-profile {
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  border-radius: 50%;
+  border-color: black;
+}
+
+.status-icon, .priority-icon {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  margin-right: 5px;
+}
+
+.ticket-title {
+  flex: 1;
+  color: black;
+}
+
+.ticket-tag {
+  background-color: white; /* Box background color */
+  padding: 3px 5px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.column-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Space below the header */
+  font-size: small;
+  font-weight: lighter;
+}
+
+.header-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  margin-right: 5px; /* Space between icon and text */
+  border-radius: 50%;
+  border-color: black;
+}
+
+.header-icons {
+  margin-left: auto; /* Pushes icons to the right */
+  display: flex;
+  align-items: center;
+}
+
+.header-action-icon {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  margin-left: 10px; /* Space between icons */
+}
+
+.ticket-count {
+  margin-left: 7px; /* Minimal spacing to avoid gap */
+  font-size: 14px; /* Adjust size as needed */
+  color: #555; /* Optional: Change color for better readability */
+  margin-bottom: -3px;
+}
