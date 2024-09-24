@@ -27,7 +27,6 @@
 .ticket-row {
   display: flex;
   align-items: left;
-  margin: 5px 0;
   color: grey;
 }
 
@@ -42,12 +41,18 @@
   border-color: black;
 }
 
-.status-icon, .priority-icon {
-  width: 20px; /* Adjust size as needed */
-  height: 20px;
+.status-icon {
+  width: 18px; /* Adjust size as needed */
+  height: 18px;
   margin-right: 5px;
 }
-
+.priority-icon {
+  width: 18px; /* Adjust size as needed */
+  height: 18px;
+  margin-right: 7px;
+  border-radius: 1px;
+  border-color: black;
+}
 .ticket-title {
   flex: 1;
   color: black;
