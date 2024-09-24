@@ -26,7 +26,17 @@
     justify-content: space-between;
     padding: .25rem;
 }
-
+.dropdown-select{
+  align-items: center;
+    background: #fff;
+    border: none;
+    border-radius: .25rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+    cursor: pointer;
+  width: 100px;
+  height: 25px;
+    
+}
 .display-icon {
   width: 24px; /* Adjust size as needed */
   height: 24px;
@@ -38,20 +48,21 @@
   top: 100%; /* Position it below the button */
   left: 0; /* Align with the left edge of the button */
   background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dfdddd;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.151);
   padding: 10px;
   z-index: 1000; /* Ensure it appears above other elements */
   margin-top: 5px; /* Add some space between the button and dropdown */
   width: 250px; /* Set a fixed width for the dropdown box */
-  height: 100px;
+  border-radius: 10px;
+  height: 80px;
 }
 
 .dropdown-row {
   display: flex;
   justify-content: space-between; /* Aligns items to leftmost and rightmost */
   align-items: center; /* Align items in row */
-  margin: 20px 0; /* Space between rows */
+  margin: 10px; /* Space between rows */
 }
 
 .dropdown-row strong {

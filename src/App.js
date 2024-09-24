@@ -71,18 +71,22 @@ function App() {
             <div className="dropdown-content">
               <div className="dropdown-row">
                 <strong>Grouping:</strong>
-                <select value={groupBy} onChange={handleGroupByChange}>
+                <div className="dropdown-select">
+                <select value={groupBy} onChange={handleGroupByChange} className="dropdown-select">
                   <option value="status">Status</option>
                   <option value="user">User</option>
                   <option value="priority">Priority</option>
                 </select>
+                </div>
               </div>
               <div className="dropdown-row">
                 <strong>Ordering:</strong>
-                <select value={sortBy} onChange={handleSortByChange}>
+                <div className="dropdown-select">
+                <select value={sortBy} onChange={handleSortByChange} className="dropdown-select">
                   <option value="priority">Priority</option>
                   <option value="title">Title</option>
                 </select>
+                </div>
               </div>
             </div>
           )}
