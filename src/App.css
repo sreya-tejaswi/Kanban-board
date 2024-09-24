@@ -6,6 +6,7 @@
   margin-left: 10px;
   margin-bottom: 20px; /* Adjust as needed */
   background-color: white;
+  
 }
 
 .display-dropdown {
@@ -15,13 +16,15 @@
 }
 
 .dropdown-trigger {
-  display: flex;
   align-items: center;
-  background-color: #f0f0f0; /* Background color of the box */
-  border: 1px solid #ccc; /* Border color */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 16px; /* Increased padding for a larger box */
-  cursor: pointer; /* Change cursor on hover */
+    background: #fff;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: .25rem;
 }
 
 .display-icon {

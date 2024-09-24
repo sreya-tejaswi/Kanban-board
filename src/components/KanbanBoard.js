@@ -1,9 +1,9 @@
 import React from "react";
 import "./KanbanBoard.css";
 import { groupTickets, sortTickets } from "../utils/ticketUtils";
+import UserAvatar from "./UserAvatar/UserAvatar"; // Import the new UserAvatar component
 
-// Import SVGs
-import userProfileImage from '../assets/user-profile.png'; // Placeholder user profile image
+// Import SVGs for other icons
 import backlogImage from '../assets/Backlog.svg';
 import doneImage from '../assets/Done.svg';
 import inProgressImage from '../assets/in-progress.svg';
@@ -43,70 +43,84 @@ const KanbanBoard = ({ tickets, users, groupBy, sortBy }) => {
     sortedTickets[group] = sortTickets(groupedTickets[group], sortBy);
   });
 
+  // Helper function to get user by ID
+  const getUserById = (userId) => users.find((user) => user.id === userId);
+
   return (
     <div className="kanban-board">
       {/* Render columns based on grouping */}
-      {Object.keys(sortedTickets).map((group) => (
-        <div key={group} className="kanban-column">
-          {/* Header with corresponding image and action icons */}
-          <div className="column-header">
-            {groupBy === "status" && (
-              <img src={statusImages[group]} alt={group} className="header-icon" />
-            )}
-            {groupBy === "priority" && (
-              <img src={priorityImages[getPriorityKey(group)]} alt={group} className="header-icon" />
-            )}
-            {groupBy === "user" && (
-              <img src={userProfileImage} alt="User" className="header-icon" />
-            )}
-            <h3>{group}</h3>
-            {/* Ticket count */}
-            <span className="ticket-count">{sortedTickets[group].length}</span>
-            {/* Add and menu icons */}
-            <div className="header-icons">
-              <img src={addImage} alt="Add" className="header-action-icon" />
-              <img src={menuImage} alt="Menu" className="header-action-icon" />
+      {Object.keys(sortedTickets).map((group) => {
+        const groupUser = users.find(user => user.name === group); // Find the user based on group (user name)
+        
+        return (
+          <div key={group} className="kanban-column">
+            {/* Header with corresponding image and action icons */}
+            <div className="column-header">
+              {groupBy === "status" && (
+                <img src={statusImages[group]} alt={group} className="header-icon" />
+              )}
+              {groupBy === "priority" && (
+                <img src={priorityImages[getPriorityKey(group)]} alt={group} className="header-icon" />
+              )}
+              {groupBy === "user" && groupUser && (
+                <UserAvatar name={groupUser.name} available={groupUser.available} />
+              )}
+              <h3>{group}</h3>
+              {/* Ticket count */}
+              <span className="ticket-count">{sortedTickets[group].length}</span>
+              {/* Add and menu icons */}
+              <div className="header-icons">
+                <img src={addImage} alt="Add" className="header-action-icon" />
+                <img src={menuImage} alt="Menu" className="header-action-icon" />
+              </div>
             </div>
+            {sortedTickets[group].map((ticket) => (
+              <div key={ticket.id} className="kanban-ticket">
+                {/* Row 1: Ticket ID and User Profile Image */}
+                <div className="ticket-row">
+                  <span className="ticket-id">{ticket.id}</span>
+                  {groupBy !== "user" && (
+                    <UserAvatar 
+                      name={getUserById(ticket.userId)?.name || "Unknown"} 
+                      available={getUserById(ticket.userId)?.available} 
+                    />
+                  )}
+                </div>
+
+                {/* Row 2: Status Image and Title */}
+                <h3>
+                <div className="ticket-row">
+                  {groupBy !== "status" && (
+                    <img 
+                      src={getStatusImage(ticket.status)} 
+                      alt={ticket.status} 
+                      className="status-icon" 
+                    />
+                  )}
+                  <span className="ticket-title">{ticket.title}</span>
+                </div>
+                </h3>
+
+                {/* Row 3: Priority Image and Tags */}
+                <div className="ticket-row">
+                  {groupBy !== "priority" && (
+                    <img 
+                      src={getPriorityImage(ticket.priority)} 
+                      alt={getPriorityLabel(ticket.priority)} 
+                      className="priority-icon" 
+                    />
+                  )}
+                  <span className="tag-container">
+                    <span className="tag-indicator" /> {/* Grey circle */}
+                    <span className="ticket-tag">{ticket.tag.join(', ')}</span>
+                  </span>
+                </div>
+
+              </div>
+            ))}
           </div>
-          {sortedTickets[group].map((ticket) => (
-            <div key={ticket.id} className="kanban-ticket">
-              {/* Row 1: Ticket ID and User Profile Image */}
-              <div className="ticket-row">
-                <span className="ticket-id">{ticket.id}</span>
-                {groupBy !== "user" && (
-                  <img src={userProfileImage} alt="User" className="user-profile" />
-                )}
-              </div>
-
-              {/* Row 2: Status Image and Title */}
-              <h3>
-              <div className="ticket-row">
-                {groupBy !== "status" && (
-                  <img 
-                    src={getStatusImage(ticket.status)} 
-                    alt={ticket.status} 
-                    className="status-icon" 
-                  />
-                )}
-                <span className="ticket-title">{ticket.title}</span>
-              </div>
-              </h3>
-
-              {/* Row 3: Priority Image and Tags */}
-              <div className="ticket-row">
-                {groupBy !== "priority" && (
-                  <img 
-                    src={getPriorityImage(ticket.priority)} 
-                    alt={getPriorityLabel(ticket.priority)} 
-                    className="priority-icon" 
-                  />
-                )}
-                <span className="ticket-tag">{ticket.tag.join(', ')}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

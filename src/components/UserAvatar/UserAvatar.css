@@ -1,0 +1,35 @@
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; /* Adjust as needed */
+  height: 24px; /* Adjust as needed */
+  border-radius: 50%;
+  position: relative;
+  font-size: 1.2em;
+  color: #fff; /* Text color for initials */
+  margin-right: 5px;
+}
+
+.initials {
+  z-index: 1; /* Ensure initials are on top */
+  font-size: small;
+}
+
+.status-indicator {
+  width: 9px; /* Size of the status dot */
+  height: 9px; /* Size of the status dot */
+  border-radius: 50%;
+  position: absolute;
+  bottom: -3px; /* Adjust as needed */
+  right: -3px; /* Adjust as needed */
+  border: 2.5px solid white; /* Optional: white border for better visibility */
+}
+
+.available {
+  background-color: green; /* Color for available users */
+}
+
+.unavailable {
+  background-color: rgb(220, 216, 216); /* Color for unavailable users */
+}
